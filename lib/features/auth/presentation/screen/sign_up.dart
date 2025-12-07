@@ -2,6 +2,7 @@ import 'package:dev_bank/core/const/colors.dart';
 import 'package:dev_bank/core/global/customBlinkText.dart';
 import 'package:dev_bank/core/global/customButton.dart';
 import 'package:dev_bank/core/global/customTextField.dart';
+import 'package:dev_bank/core/global/customTyping.dart';
 import 'package:dev_bank/features/auth/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,11 +22,23 @@ class SingUp extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
-          title: BlinkingText(
-            text: 'SignUp',
-            fontSize: 20,
+          title: TypingText(
+            words: [
+              'Sign Up',
+              'Register',
+              'Create Account',
+              'Join',
+              'Get Started',
+              'Enroll',
+              'Open Account',
+              'Become a Member',
+              'Subscribe',
+            ],
+            fontSize: 16,
             textColor: Colors.white,
             fontWeight: FontWeight.w600,
+            typingSpeed: Duration(milliseconds: 350),
+            pauseDuration: Duration(milliseconds: 1000),
           ),
         ),
         body: Container(

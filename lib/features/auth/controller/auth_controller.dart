@@ -7,8 +7,18 @@ class AuthController extends GetxController {
   var isLoggedIn = false.obs; // user login state
   var userEmail = ''.obs; // current user email
 
+  RxString emailText = ''.obs;
+  RxString passwordText = ''.obs;
+
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  @override
+  void onInit() {
+    super.onInit();
+    email.addListener(() => emailText.value = email.text);
+    password.addListener(() => passwordText.value = password.text);
+  }
 
   // Simulated sign-in function
   Future<void> signIn({required String email, required String password}) async {
@@ -45,5 +55,13 @@ class AuthController extends GetxController {
     // For example, read from shared preferences / secure storage
     // isLoggedIn.value = ...
     // userEmail.value = ...
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    email.clear();
+    password.clear();
   }
 }

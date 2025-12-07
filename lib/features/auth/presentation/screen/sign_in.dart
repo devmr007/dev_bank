@@ -3,6 +3,7 @@ import 'package:dev_bank/core/const/colors.dart';
 import 'package:dev_bank/core/global/customBlinkText.dart';
 import 'package:dev_bank/core/global/customButton.dart';
 import 'package:dev_bank/core/global/customTextField.dart';
+import 'package:dev_bank/core/global/customTyping.dart';
 import 'package:dev_bank/features/auth/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,11 +23,23 @@ class SignIn extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
-          title: BlinkingText(
-            text: 'SignIn',
-            fontSize: 20,
+          title: TypingText(
+            words: [
+              'Sign In',
+              'Login In',
+              'Access Account',
+              'Enter',
+              'Member Login',
+              'Authenticate',
+              'Connect',
+              'Resume Session',
+              'Account Entry',
+            ],
+            fontSize: 16,
             textColor: Colors.white,
             fontWeight: FontWeight.w600,
+            typingSpeed: Duration(milliseconds: 350),
+            pauseDuration: Duration(milliseconds: 1000),
           ),
         ),
         body: Container(
@@ -82,10 +95,21 @@ class SignIn extends StatelessWidget {
               children: [
                 Gap(20),
                 BlinkingText(
-                  text: '> Welcome back, developer!',
+                  // blinkCursor: true,
+                  // hideCursor: true,
+                  text: '> Welcome back, developers!',
                   textColor: AppColors.white,
                   fontSize: 25,
                 ),
+
+                // TypingText(
+                //   words: ['developer', 'designer', 'engineer'],
+                //   fontSize: 25,
+                //   textColor: Colors.white,
+                //   fontWeight: FontWeight.bold,
+                //   typingSpeed: Duration(milliseconds: 150),
+                //   pauseDuration: Duration(milliseconds: 1000),
+                // ),
                 Gap(10),
                 ProgrammingTextField(
                   label: 'Email',
