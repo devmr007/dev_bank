@@ -13,17 +13,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
       child: GetMaterialApp(
         title: 'Dev Bank',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.transparent,
+          scaffoldBackgroundColor: AppColors.terminalBG,
           colorScheme: ColorScheme.light(
-            surface: AppColors.white,
-            primary: AppColors.white,
+            surface: AppColors.terminalBG,
+            primary: AppColors.terminalBG,
           ),
-          canvasColor: AppColors.white,
-          fontFamily: GoogleFonts.inter.toString(),
+          canvasColor: AppColors.terminalBG,
+          fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
           useMaterial3: true,
         ),
         initialBinding: Binding(),
