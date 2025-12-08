@@ -106,22 +106,6 @@ class SingUp extends StatelessWidget {
                   controller: controller.password,
                 ),
                 Gap(20),
-                // Row(
-                //   children: [
-                //     SizedBox(),
-                //     Spacer(),
-                //     InkWell(
-                //       onTap: () {
-                //         Get.snackbar('forgot', 'forgot');
-                //       },
-                //       child: BlinkingText(
-                //         text: 'forgot password?',
-                //         textColor: AppColors.buttonText,
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                Gap(30),
                 ProgrammingButton(
                   text: "Sign Up",
                   onPressed: () {
@@ -132,14 +116,121 @@ class SingUp extends StatelessWidget {
                   },
                 ),
                 Gap(20),
-                // Center(
-                //   child: Icon(
-                //     Icons.fingerprint_outlined,
-                //     size: MediaQuery.of(context).size.width * 0.2,
-                //     color: AppColors.neonGreen,
-                //   ),
-                // ),
-                // Gap(10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        color: AppColors.shadowGreen,
+                      ),
+                    ),
+                    Gap(10),
+                    CTinter(text: 'or', textColor: AppColors.white),
+                    Gap(10),
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        color: AppColors.shadowGreen,
+                      ),
+                    ),
+                  ],
+                ),
+                Gap(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // GOOGLE LOGIN BUTTON
+                    InkWell(
+                      onTap: () {
+                        // controller.signInWithGoogle();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                          vertical: 12.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.terminalBG.withOpacity(0.4),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: Colors.cyanAccent.withOpacity(0.4),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.cyanAccent.withOpacity(0.1),
+                              blurRadius: 6,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'lib/assets/logo/googlelogo.png',
+                              width: 20,
+                              height: 20,
+                            ),
+
+                            Gap(10),
+                            Text(
+                              "Google",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    // APPLE LOGIN BUTTON
+                    InkWell(
+                      onTap: () {
+                        // controller.signInWithApple();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                          vertical: 12.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.terminalBG.withOpacity(0.4),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: Colors.cyanAccent.withOpacity(0.4),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.cyanAccent.withOpacity(0.1),
+                              blurRadius: 6,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.apple, color: Colors.white, size: 22),
+                            Gap(10),
+                            Text(
+                              "Apple",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Gap(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

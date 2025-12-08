@@ -1,3 +1,4 @@
+import 'package:dev_bank/app_routes.dart';
 import 'package:dev_bank/core/const/colors.dart';
 import 'package:dev_bank/core/global/customBlinkText.dart';
 import 'package:dev_bank/core/global/customButton.dart';
@@ -94,7 +95,12 @@ class Verify extends StatelessWidget {
                 // ),
                 RoundedPinInput(),
                 Gap(30),
-                ProgrammingButton(text: "Send Values", onPressed: () {}),
+                ProgrammingButton(
+                  text: "Send Values",
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.setnewpass);
+                  },
+                ),
                 Gap(20),
               ],
             ),
@@ -104,80 +110,6 @@ class Verify extends StatelessWidget {
     );
   }
 }
-
-// class RoundedPinInput extends StatelessWidget {
-//   final void Function(String)? onCompleted;
-//   final String? Function(String?)? validator;
-
-//   const RoundedPinInput({super.key, this.onCompleted, this.validator});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final authController = Get.find<AuthController>();
-//     final defaultPinTheme = PinTheme(
-//       width: 50.w,
-//       height: 60.h,
-//       textStyle: TextStyle(
-//         fontSize: 22.sp,
-//         color: Colors.greenAccent,
-//         fontFamily: 'SourceCodePro', // optional
-//       ),
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(10),
-//         border: Border(
-//           bottom: BorderSide(
-//             color: Colors.greenAccent.withOpacity(0.5),
-//             width: 2,
-//           ),
-//         ),
-//       ),
-//     );
-
-//     return Pinput(
-//       controller: authController.otp,
-//       validator: validator,
-//       length: 6,
-//       defaultPinTheme: defaultPinTheme,
-//       cursor: Container(
-//         width: 14.w,
-//         height: 2.h,
-//         decoration: BoxDecoration(
-//           color: Colors.greenAccent,
-//           borderRadius: BorderRadius.circular(15.r),
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.greenAccent.withOpacity(0.6),
-//               blurRadius: 8,
-//             ),
-//           ],
-//         ),
-//       ),
-//       focusedPinTheme: defaultPinTheme.copyWith(
-//         decoration: defaultPinTheme.decoration!.copyWith(
-//           border: Border(
-//             bottom: BorderSide(color: Colors.greenAccent, width: 2),
-//           ),
-
-//           borderRadius: BorderRadius.circular(10),
-//           // boxShadow: [
-//           //   BoxShadow(
-//           //     color: Colors.greenAccent.withOpacity(0.5),
-//           //     blurRadius: 10,
-//           //     spreadRadius: 1,
-//           //   ),
-//           // ],
-//         ),
-//       ),
-//       submittedPinTheme: defaultPinTheme.copyWith(
-//         decoration: defaultPinTheme.decoration!.copyWith(
-//           color: Colors.greenAccent.withOpacity(0.1),
-//         ),
-//       ),
-//       showCursor: true,
-//       onCompleted: onCompleted,
-//     );
-//   }
-// }
 
 class RoundedPinInput extends StatelessWidget {
   final void Function(String)? onCompleted;

@@ -126,7 +126,7 @@ class SignIn extends StatelessWidget {
                     ),
                   ],
                 ),
-                Gap(30),
+                Gap(20),
                 ProgrammingButton(
                   text: "Sign In",
                   onPressed: () {
@@ -136,9 +136,28 @@ class SignIn extends StatelessWidget {
                     );
                   },
                 ),
-                Gap(10),
                 Gap(20),
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        color: AppColors.shadowGreen,
+                      ),
+                    ),
+                    Gap(10),
+                    CTinter(text: 'or', textColor: AppColors.white),
+                    Gap(10),
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        color: AppColors.shadowGreen,
+                      ),
+                    ),
+                  ],
+                ),
+                Gap(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -233,7 +252,7 @@ class SignIn extends StatelessWidget {
                   ],
                 ),
 
-                Gap(10),
+                Gap(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
