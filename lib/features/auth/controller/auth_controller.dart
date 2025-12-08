@@ -1,3 +1,4 @@
+import 'package:dev_bank/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,12 +30,13 @@ class AuthController extends GetxController {
       isLoading.value = true;
 
       // Simulate network delay
-      await Future.delayed(const Duration(seconds: 2));
+      // await Future.delayed(const Duration(seconds: 2));
 
       // Simple mock check
       if (email == 'dev@bank.com' && password == '123456') {
         isLoggedIn.value = true;
         userEmail.value = email;
+        Get.toNamed(AppRoutes.home);
       } else {
         isLoggedIn.value = false;
         userEmail.value = '';

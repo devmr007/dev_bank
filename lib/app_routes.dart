@@ -3,6 +3,7 @@ import 'package:dev_bank/features/auth/presentation/screen/set_new_pass.dart';
 import 'package:dev_bank/features/auth/presentation/screen/sign_in.dart';
 import 'package:dev_bank/features/auth/presentation/screen/sign_up.dart';
 import 'package:dev_bank/features/auth/presentation/screen/verify.dart';
+import 'package:dev_bank/features/home/presentation/screen/main_home.dart';
 import 'package:dev_bank/features/splash/screen/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +16,8 @@ class AppRoutes {
   static const String forgotPass = '/forgot_pass';
   static const String verify = '/verify';
   static const String setnewpass = '/set_new_pass';
+  // home
+  static const String home = '/home';
 
   static List<GetPage> routes = [
     GetPage(
@@ -35,5 +38,6 @@ class AppRoutes {
       page: () => SetNewPass(),
       transition: Transition.native,
     ),
+    GetPage(name: home, page: () => MainHome(), transition: Transition.native),
   ];
 }
