@@ -95,21 +95,10 @@ class SignIn extends StatelessWidget {
               children: [
                 Gap(20),
                 BlinkingText(
-                  // blinkCursor: true,
-                  // hideCursor: true,
                   text: '> Welcome back, developers!',
                   textColor: AppColors.white,
                   fontSize: 25,
                 ),
-
-                // TypingText(
-                //   words: ['developer', 'designer', 'engineer'],
-                //   fontSize: 25,
-                //   textColor: Colors.white,
-                //   fontWeight: FontWeight.bold,
-                //   typingSpeed: Duration(milliseconds: 150),
-                //   pauseDuration: Duration(milliseconds: 1000),
-                // ),
                 Gap(10),
                 ProgrammingTextField(
                   label: 'Email',
@@ -128,7 +117,7 @@ class SignIn extends StatelessWidget {
                     Spacer(),
                     InkWell(
                       onTap: () {
-                        Get.snackbar('forgot', 'forgot');
+                        Get.toNamed(AppRoutes.forgotPass);
                       },
                       child: BlinkingText(
                         text: 'forgot password?',

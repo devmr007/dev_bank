@@ -69,14 +69,6 @@ class SingUp extends StatelessWidget {
                 color: Colors.cyanAccent.withOpacity(0.4),
                 width: 1.5,
               ),
-              // right: BorderSide(
-              //   color: Colors.cyanAccent.withOpacity(0.4),
-              //   width: 1.5,
-              // ),
-              // left: BorderSide(
-              //   color: Colors.cyanAccent.withOpacity(0.4),
-              //   width: 1.5,
-              // ),
             ),
             boxShadow: [
               BoxShadow(

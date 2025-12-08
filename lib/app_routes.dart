@@ -1,3 +1,4 @@
+import 'package:dev_bank/features/auth/presentation/screen/forgot_pass.dart';
 import 'package:dev_bank/features/auth/presentation/screen/sign_in.dart';
 import 'package:dev_bank/features/auth/presentation/screen/sign_up.dart';
 import 'package:dev_bank/features/splash/screen/splash_screen.dart';
@@ -9,6 +10,7 @@ class AppRoutes {
   // auth
   static const String signin = '/sign_in';
   static const String signup = '/sign_up';
+  static const String forgotPass = '/forgot_pass';
 
   static List<GetPage> routes = [
     GetPage(
@@ -18,5 +20,10 @@ class AppRoutes {
     ),
     GetPage(name: signin, page: () => SignIn(), transition: Transition.native),
     GetPage(name: signup, page: () => SingUp(), transition: Transition.native),
+    GetPage(
+      name: forgotPass,
+      page: () => ForgotPass(),
+      transition: Transition.native,
+    ),
   ];
 }
