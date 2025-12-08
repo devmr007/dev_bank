@@ -4,6 +4,7 @@ import 'package:dev_bank/core/global/customButton.dart';
 import 'package:dev_bank/core/global/customTyping.dart';
 import 'package:dev_bank/features/auth/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -104,6 +105,80 @@ class Verify extends StatelessWidget {
   }
 }
 
+// class RoundedPinInput extends StatelessWidget {
+//   final void Function(String)? onCompleted;
+//   final String? Function(String?)? validator;
+
+//   const RoundedPinInput({super.key, this.onCompleted, this.validator});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final authController = Get.find<AuthController>();
+//     final defaultPinTheme = PinTheme(
+//       width: 50.w,
+//       height: 60.h,
+//       textStyle: TextStyle(
+//         fontSize: 22.sp,
+//         color: Colors.greenAccent,
+//         fontFamily: 'SourceCodePro', // optional
+//       ),
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(10),
+//         border: Border(
+//           bottom: BorderSide(
+//             color: Colors.greenAccent.withOpacity(0.5),
+//             width: 2,
+//           ),
+//         ),
+//       ),
+//     );
+
+//     return Pinput(
+//       controller: authController.otp,
+//       validator: validator,
+//       length: 6,
+//       defaultPinTheme: defaultPinTheme,
+//       cursor: Container(
+//         width: 14.w,
+//         height: 2.h,
+//         decoration: BoxDecoration(
+//           color: Colors.greenAccent,
+//           borderRadius: BorderRadius.circular(15.r),
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.greenAccent.withOpacity(0.6),
+//               blurRadius: 8,
+//             ),
+//           ],
+//         ),
+//       ),
+//       focusedPinTheme: defaultPinTheme.copyWith(
+//         decoration: defaultPinTheme.decoration!.copyWith(
+//           border: Border(
+//             bottom: BorderSide(color: Colors.greenAccent, width: 2),
+//           ),
+
+//           borderRadius: BorderRadius.circular(10),
+//           // boxShadow: [
+//           //   BoxShadow(
+//           //     color: Colors.greenAccent.withOpacity(0.5),
+//           //     blurRadius: 10,
+//           //     spreadRadius: 1,
+//           //   ),
+//           // ],
+//         ),
+//       ),
+//       submittedPinTheme: defaultPinTheme.copyWith(
+//         decoration: defaultPinTheme.decoration!.copyWith(
+//           color: Colors.greenAccent.withOpacity(0.1),
+//         ),
+//       ),
+//       showCursor: true,
+//       onCompleted: onCompleted,
+//     );
+//   }
+// }
+
 class RoundedPinInput extends StatelessWidget {
   final void Function(String)? onCompleted;
   final String? Function(String?)? validator;
@@ -114,38 +189,13 @@ class RoundedPinInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final authController = Get.find<AuthController>();
 
-    // final defaultPinTheme = PinTheme(
-    //   width: 55.w,
-    //   height: 60.h,
-    //   textStyle: TextStyle(
-    //     fontSize: 22.sp,
-    //     fontWeight: FontWeight.w600,
-    //     color: Colors.greenAccent,
-    //     fontFamily: 'SourceCodePro', // optional code font
-    //   ),
-    //   decoration: BoxDecoration(
-    //     color: AppColors.terminalBG.withOpacity(0.4),
-    //     borderRadius: BorderRadius.circular(8.r),
-    //     border: Border.all(
-    //       color: Colors.greenAccent.withOpacity(0.3),
-    //       width: 1.5,
-    //     ),
-    //     boxShadow: [
-    //       BoxShadow(
-    //         color: Colors.greenAccent.withOpacity(0.15),
-    //         blurRadius: 5,
-    //         spreadRadius: 1,
-    //       ),
-    //     ],
-    //   ),
-    // );
     final defaultPinTheme = PinTheme(
       width: 50.w,
       height: 60.h,
       textStyle: TextStyle(
         fontSize: 22.sp,
         color: Colors.greenAccent,
-        fontFamily: 'SourceCodePro', // optional
+        fontFamily: 'SourceCodePro', // nice terminal font
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -161,8 +211,14 @@ class RoundedPinInput extends StatelessWidget {
     return Pinput(
       controller: authController.otp,
       validator: validator,
+
+      // ⬇️ ONLY NUMBERS ALLOWED
+      keyboardType: TextInputType.number,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+
       length: 6,
       defaultPinTheme: defaultPinTheme,
+
       cursor: Container(
         width: 14.w,
         height: 2.h,
@@ -177,27 +233,22 @@ class RoundedPinInput extends StatelessWidget {
           ],
         ),
       ),
+
       focusedPinTheme: defaultPinTheme.copyWith(
         decoration: defaultPinTheme.decoration!.copyWith(
           border: Border(
             bottom: BorderSide(color: Colors.greenAccent, width: 2),
           ),
-
           borderRadius: BorderRadius.circular(10),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.greenAccent.withOpacity(0.5),
-          //     blurRadius: 10,
-          //     spreadRadius: 1,
-          //   ),
-          // ],
         ),
       ),
+
       submittedPinTheme: defaultPinTheme.copyWith(
         decoration: defaultPinTheme.decoration!.copyWith(
           color: Colors.greenAccent.withOpacity(0.1),
         ),
       ),
+
       showCursor: true,
       onCompleted: onCompleted,
     );
