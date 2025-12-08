@@ -1,3 +1,4 @@
+import 'package:dev_bank/app_routes.dart';
 import 'package:dev_bank/core/const/colors.dart';
 import 'package:dev_bank/core/global/customBlinkText.dart';
 import 'package:dev_bank/core/global/customButton.dart';
@@ -83,7 +84,7 @@ class ForgotPass extends StatelessWidget {
               children: [
                 Gap(20),
                 BlinkingText(
-                  text: '> Initiating password reset...',
+                  text: '> Initiating password reset',
                   textColor: AppColors.white,
                   fontSize: 25,
                 ),
@@ -93,7 +94,12 @@ class ForgotPass extends StatelessWidget {
                   controller: controller.email,
                 ),
                 Gap(30),
-                ProgrammingButton(text: "Send Values", onPressed: () {}),
+                ProgrammingButton(
+                  text: "Send Values",
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.verify);
+                  },
+                ),
                 Gap(20),
               ],
             ),

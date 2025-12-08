@@ -41,6 +41,7 @@ dependencies:
   dio: ^5.9.0
   flutter_screenutil: ^5.9.3
   gap: ^3.0.1
+  pinput: ^6.0.1
 
 dev_dependencies:
   flutter_test:

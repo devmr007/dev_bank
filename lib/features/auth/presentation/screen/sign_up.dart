@@ -92,7 +92,7 @@ class SingUp extends StatelessWidget {
                 Gap(10),
                 ProgrammingTextField(
                   label: 'Full Name',
-                  controller: controller.email,
+                  controller: controller.fullN,
                 ),
                 Gap(10),
                 ProgrammingTextField(
