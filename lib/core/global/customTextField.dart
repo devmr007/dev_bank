@@ -89,25 +89,34 @@ class _ProgrammingTextFieldState extends State<ProgrammingTextField> {
           child: Stack(
             children: [
               /// REAL TEXTFIELD
-              TextField(
-                controller: widget.controller,
-                obscureText: obscure,
-                keyboardType: widget.keyboardType,
-                cursorColor: Colors.green,
-                // showCursor: false,
-                // cursorWidth: 5,
-                cursorOpacityAnimates: false,
-                style: GoogleFonts.jetBrainsMono(
-                  fontSize: widget.fontSize,
-                  color: widget.textColor,
+              Theme(
+                data: Theme.of(context).copyWith(
+                  textSelectionTheme: TextSelectionThemeData(
+                    cursorColor: widget.cursorColor,
+                    selectionColor: widget.cursorColor.withOpacity(0.3),
+                    selectionHandleColor: widget.cursorColor,
+                  ),
                 ),
-                decoration: const InputDecoration(
-                  isCollapsed: true,
-                  border: InputBorder.none,
+                child: TextField(
+                  controller: widget.controller,
+                  obscureText: obscure,
+                  keyboardType: widget.keyboardType,
+                  cursorColor: Colors.green,
+                  // showCursor: false,
+                  // cursorWidth: 5,
+                  cursorOpacityAnimates: false,
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: widget.fontSize,
+                    color: widget.textColor,
+                  ),
+                  decoration: const InputDecoration(
+                    isCollapsed: true,
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (_) {
+                    setState(() {}); // update cursor position
+                  },
                 ),
-                onChanged: (_) {
-                  setState(() {}); // update cursor position
-                },
               ),
 
               /// FAKE TERMINAL CURSOR (only if text exists)
