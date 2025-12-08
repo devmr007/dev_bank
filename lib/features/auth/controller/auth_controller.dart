@@ -14,6 +14,7 @@ class AuthController extends GetxController {
   TextEditingController password = TextEditingController();
   TextEditingController fullN = TextEditingController();
   TextEditingController otp = TextEditingController();
+  TextEditingController confirmpass = TextEditingController();
 
   @override
   void onInit() {
