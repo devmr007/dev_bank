@@ -3,6 +3,7 @@ import 'package:dev_bank/features/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MainHome extends StatelessWidget {
   MainHome({super.key});
@@ -17,11 +18,17 @@ class MainHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller.pageController,
         onPageChanged: (index) => controller.selectedtab.value = index,
-        // children: pages,
+        children: [
+          HomePage(),
+          Center(child: Text('Search')),
+          Center(child: Text('Message')),
+          Center(child: Text('Setting')),
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -71,22 +78,101 @@ class MainHome extends StatelessWidget {
         }),
       ),
     );
-    //   bottomNavigationBar: BottomNavigationBar(
-    //     backgroundColor: AppColors.terminalBG,
-    //     selectedItemColor: AppColors.neonGreen,
-    //     unselectedItemColor: AppColors.neonCyan.withOpacity(0.5),
-    //     showSelectedLabels: false,
-    //     showUnselectedLabels: false,
-    //     items: [
-    //       BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    //       BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-    //       BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Messages'),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.settings),
-    //         label: 'Settings',
-    //       ),
-    //     ],
-    //   ),
-    // );
+  }
+}
+
+class HomePage extends GetView<HomeController> {
+  HomePage({super.key});
+
+  final TextEditingController linkController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: CustomText(text: "YouTube Playlist Loop"),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Obx(
+            () => controller.videoUrls.isEmpty
+                ? const SizedBox()
+                : YoutubePlayer(
+                    controller: controller.ytController!,
+                    showVideoProgressIndicator: true,
+                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: linkController,
+                    decoration: const InputDecoration(hintText: "YouTube link"),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    controller.addVideo(linkController.text);
+                    linkController.clear();
+                  },
+                ),
+              ],
+            ),
+          ),
+          Obx(
+            () => Text(
+              "Timer: ${controller.currentSeconds.value}s",
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+          Expanded(
+            child: Obx(
+              () => ListView.builder(
+                itemCount: controller.videoUrls.length,
+                itemBuilder: (c, i) => ListTile(
+                  title: Text(controller.videoUrls[i]),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () => controller.removeVideo(i),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomText extends StatelessWidget {
+  final String text;
+  final Color? textColor;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+
+  const CustomText({
+    super.key,
+    required this.text,
+    this.textColor,
+    this.fontSize,
+    this.fontWeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize ?? 16,
+        fontWeight: fontWeight ?? FontWeight.w500,
+        color: textColor ?? Colors.green,
+      ),
+    );
   }
 }
